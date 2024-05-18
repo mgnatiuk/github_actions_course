@@ -8,3 +8,13 @@ on:
     pull_request:
         branches:
             - dev
+
+jobs:
+    welcome:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Say: Hello"
+              run: echo "Hello"
+              
+            - name: "Say: World"
+              run: echo "World!"
