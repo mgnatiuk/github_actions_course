@@ -1,10 +1,11 @@
-name: A workflow for my Hello World file
+name: Welcome
 on: push
+
 jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
-      name: Write text
-      run: echo "Welcome {{github.event.name}}"
+      - name: Write text
+        run: echo "Welcome {{github.event.name}}"
 
    
