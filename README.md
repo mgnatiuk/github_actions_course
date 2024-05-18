@@ -4,5 +4,5 @@
 
 ```yaml
 gh workflow run main.yaml \
--f name = Miko
-- F data=@myfile.txt
+-f name = Miko \
+-F data=@myfile.txt \
