@@ -18,12 +18,6 @@
 
 - **Marketplace**: A platform to find and share reusable actions, enhancing workflow capabilities with community-developed tools.
 
-## Diagram
-
-The following diagram illustrates the relationship between the different components of a GitHub Actions Workflow:
-
-![GitHub Actions Workflow Diagram](/images/components.png)
-
 - **Runner**: The environment where jobs are executed.
 - **Jobs**: A set of steps executed by the runner.
 - **Steps**: Sequential tasks within a job.
