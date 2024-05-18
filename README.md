@@ -32,9 +32,35 @@ The following diagram illustrates the relationship between the different compone
 ## Manual events
 
 - We can trigger workflows manually via Github CLI or Github REST API
-
 ```powershell
 gh workflow run main.yaml \
 -f name = Miko \
 -F data=@myfile.txt \
+```
+
+- If you want run workflow manualy, you should add configuration **workflow_dispatch**
+```yaml
+name: My Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name parameter'
+        required: true
+        default: 'Default Name'
+      data:
+        description: 'Data file'
+        required: true
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Name and Data
+        run: |
+          echo "Hello, ${{ github.event.inputs.name }}"
+          echo "Data file content:"
+          cat ${{ github.event.inputs.data }}
+```
 
