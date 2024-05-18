@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Write text
-        run: echo "Welcome {{github.event.name}}"
+        run: echo "Welcome $(date)"
 
    
