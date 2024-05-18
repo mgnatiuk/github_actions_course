@@ -1,5 +1,7 @@
 # GitHub Actions Certification
 
+![Badge](https://images.credly.com/images/89efc3e7-842b-4790-b09b-9ea5efc71ec3/twitter_thumb_201604_image.png)
+
 ## Components
 
 - **Actions**: Reusable tasks that perform specific jobs within a workflow.
