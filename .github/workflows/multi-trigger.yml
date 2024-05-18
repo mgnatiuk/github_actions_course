@@ -13,8 +13,11 @@ jobs:
     welcome:
         runs-on: ubuntu-latest
         steps:
+            - name: "Show action trigger"
+              run: echo "$(GITHUB_ACTION) | $(GITHUB_JOB)"
+
             - name: "Say: Hello"
               run: echo "Hello"
-              
+
             - name: "Say: World"
               run: echo "World!"
