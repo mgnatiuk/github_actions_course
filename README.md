@@ -33,7 +33,7 @@ The following diagram illustrates the relationship between the different compone
 
 - We can trigger workflows manually via Github CLI or Github REST API
 
-```yaml
+```powershell
 gh workflow run main.yaml \
 -f name = Miko \
 -F data=@myfile.txt \
