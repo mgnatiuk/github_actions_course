@@ -67,7 +67,7 @@ name: Repository Dispatch
 
 on:
   repository_dispatch:
-    types: [custom-event]
+    types: [webhook]
 
 jobs:
   dispatch:
@@ -92,6 +92,6 @@ curl -X POST \
   -H "Accept: application/vnd.github.v3+json" \
   -H "Authorization: token YOUR_PERSONAL_ACCESS_TOKEN" \
   https://api.github.com/repos/octocat/Hello-World/dispatches \
-  -d '{"event_type":"custom-event","client_payload":{"custom":"data"}}'
+  -d '{"event_type":"webhook","client_payload":{"key":"value"}}'
 ```
 
