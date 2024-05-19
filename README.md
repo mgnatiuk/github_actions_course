@@ -58,3 +58,7 @@ jobs:
           cat ${{ github.event.inputs.data }}
 ```
 
+## Webhooks
+
+- Using `repository_dispatch` with webhook type you can trigger Workflow via an external HTTP endpoint. Will only trigger a workflow run if the workflow file is on the default branch.
+
