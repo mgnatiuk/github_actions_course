@@ -61,4 +61,22 @@ jobs:
 ## Webhooks
 
 - Using `repository_dispatch` with webhook type you can trigger Workflow via an external HTTP endpoint. Will only trigger a workflow run if the workflow file is on the default branch.
+```yaml
+name: Repository Dispatch
+
+on:
+  repository_dispatch:
+    types: [custom-event]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Print Event Payload
+        run: echo "Event Payload: ${{ github.event.client_payload }}"
+```
 
