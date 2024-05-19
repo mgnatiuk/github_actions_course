@@ -67,7 +67,8 @@ name: Repository Dispatch
 
 on:
   repository_dispatch:
-    types: [webhook]
+    types:
+      - webhook
 
 jobs:
   dispatch:
