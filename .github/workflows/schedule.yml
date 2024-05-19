@@ -5,9 +5,9 @@ on:
     - cron: '*/2 * * * *'
 
 jobs:
-  hello
+  hello:
     runs-on: ubuntu-latest
     steps:
-      -name: Say hello
-       run: echo "Hello $GITHUB_ACTOR"
+      - name: Say hello
+        run: echo "Hello $GITHUB_ACTOR"
        
