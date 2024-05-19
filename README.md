@@ -26,7 +26,7 @@
 ## Manual events
 
 - We can trigger workflows manually via Github CLI or Github REST API
-```powershell
+```sh
 gh workflow run main.yaml \
 -f name = Miko \
 -F data=@myfile.txt \
@@ -61,6 +61,7 @@ jobs:
 ## Webhooks
 
 - Using `repository_dispatch` with webhook type you can trigger Workflow via an external HTTP endpoint. Will only trigger a workflow run if the workflow file is on the default branch.
+
 ```yaml
 name: Repository Dispatch
 
@@ -78,5 +79,19 @@ jobs:
 
       - name: Print Event Payload
         run: echo "Event Payload: ${{ github.event.client_payload }}"
+```
+
+When you want make request to webhook:
+- Send POST request
+- Accept type = aplication/vnd.github+json
+- Add PAT token
+- Event type = webhook
+
+```sh
+curl -X POST \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token YOUR_PERSONAL_ACCESS_TOKEN" \
+  https://api.github.com/repos/octocat/Hello-World/dispatches \
+  -d '{"event_type":"custom-event","client_payload":{"custom":"data"}}'
 ```
 
