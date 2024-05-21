@@ -12,11 +12,11 @@ jobs:
       steps:
 
         - name: "Push action"
-          if: github.action_ref == 'push'
+          if: github.event_name == 'push'
           run: echo "You run push"
 
         - name: "Other actions"
-          run: echo "You run others actions ${{github.action_ref}}"
+          run: echo "You run others actions ${{github.event_name}}"
           
 
         
