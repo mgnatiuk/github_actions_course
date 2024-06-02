@@ -79,7 +79,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Print Event Payload
-        run: echo "Event Payload: ${{ github.event.client_payload }}"
+        run: echo "Hello ${{ github.event.client_payload.name }}"
 ```
 
 When you want make request to webhook:
@@ -93,6 +93,6 @@ curl -X POST \
   -H "Accept: application/vnd.github.v3+json" \
   -H "Authorization: token YOUR_PERSONAL_ACCESS_TOKEN" \
   https://api.github.com/repos/mgnatiuk/github_actions_course/dispatches \
-  -d '{"event_type":"webhook","client_payload":{"key":"value"}}'
+  -d '{"event_type":"webhook","client_payload":{"name":"Mykola"}}'
 ```
 
