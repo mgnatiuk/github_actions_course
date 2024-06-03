@@ -96,3 +96,45 @@ curl -X POST \
   -d '{"event_type":"webhook","client_payload":{"name":"Mykola"}}'
 ```
 
+## Workflow commands
+
+```sh
+# Grouping log messages
+- name: Group example
+      run: |
+        echo "::group::Starting build"
+        echo "Building the project..."
+        # Your build commands here
+        echo "Build step 1 complete"
+        echo "Build step 2 complete"
+        echo "::endgroup::"
+
+# Masking values
+   - name: Use masked value
+      run: |
+        echo "Using masked value: ${{ secrets.MY_SECRET }}"
+        echo "Masking the value manually..."
+        echo "::add-mask::$MY_SECRET"
+        echo "This line will not show the actual secret: $MY_SECRET"
+
+# Debug
+ - name: Print debug message
+      run: |
+        echo "::debug::This is a debug message."
+```
+
+### Enabling Debug Logging
+
+To see the debug message in your logs, make sure you enable debug logging by adding a repository secret named `ACTIONS_STEP_DEBUG` with the value `true`:
+
+1. Go to your repository on GitHub.
+2. Click on **Settings**.
+3. In the left sidebar, click on **Secrets and variables** > **Actions**.
+4. Click on the **New repository secret** button.
+5. Name the secret `ACTIONS_STEP_DEBUG` and set its value to `true`.
+6. Click **Add secret**.
+
+This setup will enable debug logging for your workflows, allowing you to see debug messages in the logs.
+
+
+
