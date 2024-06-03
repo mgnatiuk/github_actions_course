@@ -178,5 +178,20 @@ To see the debug message in your logs, make sure you enable debug logging by add
 
 This setup will enable debug logging for your workflows, allowing you to see debug messages in the logs.
 
+## Workflow Context
+
+  - `github`: Information about the workflow run.
+  - `env`: Contains variables set in a workflow, job, or step.
+  - `vars`: Contains variables set at the repository, organization, or environment levels.
+  - `job`: Information about the currently running job.
+  - `jobs`: For reusable workflows only, contains outputs of jobs from the reusable workflow.
+  - `steps`: Information about the steps that have been run in the current job.
+  - `Runner`: Information about the runner that is running the current job.
+  - `secrets`: Contains the names and values of secrets that are available to a workflow run.
+  - `strategy`: Information about the matrix execution strategy for the current job.
+  - `matrix`: Contains the matrix properties defined in the workflow that apply to the current job.
+  - `inputs`: Contains the inputs of a reusable or manually triggered workflow.
+  - `needs`: Contains the outputs of all jobs that are defined as a dependensy of the current job.
+
 
 
