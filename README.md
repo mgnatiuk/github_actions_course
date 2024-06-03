@@ -26,7 +26,7 @@
 ## Manual events
 
 - We can trigger workflows manually via Github CLI or Github REST API
-```sh
+```powershell
 gh workflow run main.yaml \
 -f name = Miko \
 -F data=@myfile.txt \
