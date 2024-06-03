@@ -96,6 +96,43 @@ curl -X POST \
   -d '{"event_type":"webhook","client_payload":{"name":"Mykola"}}'
 ```
 
+## Expression functions
+
+```sh
+steps:
+  - name: Check if string contains substring
+    if: contains('Hello world', '11o')
+    run: echo "The string contains the substring."
+
+  - name: Check if string starts with
+    if: startswith("Hello world", "He")
+    run: echo "The string starts with 'He'."
+
+  - name: Check if string ends with
+    if: endswith('Hello world', 'ld')
+    run: echo "The string ends with 'ld'."
+
+  - name: Format and echo string
+    run: echo "${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}"
+
+  - name: Convert job context to JSON
+    run: echo "Job context in JSON: ${{ toJSON(github.job) }}"
+
+  - name: Parse JSON string
+    run: echo "Parsed JSON: ${{ fromJSON('{"hello": "world"}').hello }}"
+
+  - name: Hash files
+    run: echo "Hash of files: ${{ hashFiles('***/package-lock.json', '***/Gemfile.lock') }}"
+
+  - name: The job has succeeded
+    if: success()
+    run: echo "SUCCESS!"
+
+  - name: The job has failed
+    if: failure()
+    run: echo "Failure!"
+```
+
 ## Workflow commands
 
 ```sh
