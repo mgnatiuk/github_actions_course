@@ -121,6 +121,11 @@ curl -X POST \
  - name: Print debug message
       run: |
         echo "::debug::This is a debug message."
+
+# Stopping and Failing Action
+ - name: Fail workflow
+      run: |
+        echo "::error::This is a error message."
 ```
 
 ### Enabling Debug Logging
