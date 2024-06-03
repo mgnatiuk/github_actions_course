@@ -204,3 +204,38 @@ jobs:
         run: echo "This is step 1 of job 2, depending on job 1"
 ```
 
+## How to set secrets
+
+### Repository level
+```bash
+# set a secret and prompt for secret value
+gh secret set SECRET_NAME
+
+# sets a secrets and sets values from a text file
+gh secret set SECRET_NAME < secret.txt
+```
+### Environment level
+```bash
+# set a secret and prompt for secret value
+gh secret set --env ENV_NAME SECRET_NAME
+
+# get list of secrets for an env
+gh secret list --env ENV_NAME
+```
+### Organization level
+```bash
+# login with admin:org scope to managed org secrets
+gh auth login --scopes "admin:org"
+
+# set a secret only for private repos and prompt for secret alue
+gh secret set --org ORG_NAME SECRET_NAME
+
+# set a secret for public, private and internal repos
+gh secret set --org ORG_NAME SECRET_NAME -- visibility all
+
+# set a secret for specific repos
+gh secret set --org ORG_NAME SECRET_NAME --repos REPO-NAME-1, REPO-NAME-2
+
+# list secrets for the org
+gh secret list --org ORG_NAME
+```
