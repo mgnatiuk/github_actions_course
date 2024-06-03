@@ -1,11 +1,17 @@
 name: Welcome
-on: push
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GLOBAL_VAR: global_value
 
 jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
       - name: Write text
-        run: echo "Welcome $GITHUB_ACTOR | $(date)"
-
-   
+        run: |
+          echo "Welcome $GITHUB_ACTOR | $(date)"
+          echo "Global variable: ${{ env.GLOBAL_VAR }}"
