@@ -5,17 +5,11 @@
 ## Components
 
 - **Actions**: Reusable tasks that perform specific jobs within a workflow.
-
 - **Workflows**: Automated processes defined in your repository that coordinate one or more jobs, triggered by events or on a schedule.
-
 - **Jobs**: Groups of steps that execute on the same runner, typically running in parallel unless configured otherwise.
-
 - **Steps**: Individual tasks within a job that run commands or actions sequentially.
-
 - **Runs**: Instances of workflow execution triggered by events, representing the complete run-through of a workflow.
-
 - **Runners**: Servers that host the environment where the jobs are executed, available as GitHub-hosted or self-hosted options.
-
 - **Marketplace**: A platform to find and share reusable actions, enhancing workflow capabilities with community-developed tools.
 
 - **Runner**: The environment where jobs are executed.
@@ -88,7 +82,7 @@ When you want make request to webhook:
 - Add PAT token
 - Event type = webhook
 
-```sh
+```yaml
 curl -X POST \
   -H "Accept: application/vnd.github.v3+json" \
   -H "Authorization: token YOUR_PERSONAL_ACCESS_TOKEN" \
@@ -98,7 +92,7 @@ curl -X POST \
 
 ## Expression functions
 
-```sh
+```yaml
 steps:
   - name: Check if string contains substring
     if: contains('Hello world', '11o')
@@ -135,7 +129,7 @@ steps:
 
 ## Workflow commands
 
-```sh
+```yaml
 # Grouping log messages
 - name: Group example
       run: |
@@ -193,5 +187,20 @@ This setup will enable debug logging for your workflows, allowing you to see deb
   - `inputs`: Contains the inputs of a reusable or manually triggered workflow.
   - `needs`: Contains the outputs of all jobs that are defined as a dependensy of the current job.
 
+## Dependent Jobs
 
+```yaml
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: echo "This is step 1"
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Step 1
+        run: echo "This is step 1 of job 2, depending on job 1"
+```
 
