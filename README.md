@@ -239,3 +239,37 @@ gh secret set --org ORG_NAME SECRET_NAME --repos REPO-NAME-1, REPO-NAME-2
 # list secrets for the org
 gh secret list --org ORG_NAME
 ```
+
+## Variables Configuration
+```bash
+# Add variable value for the current repository in an interactive prompt
+gh variable set MYVARIABLE
+
+# Read variable value from an environment variable
+gh variable set MYVARIABLE --body "$ENV_VALUE"
+
+# Read variable value from a file
+gh variable set MYVARIABLE < myfile.txt
+
+# Set variable for a deployment environment in the current repository
+gh variable set MYVARIABLE --env myenvironment
+
+# Set organization-level variable visible to both public and private repositories
+gh variable set MYVARIABLE --org myOrg -visibility all
+
+# Set organization-level variable visible to specific repositories
+gh variable set MYVARIABLE --org myorg --repos repol, repo2, rep3
+
+# Set multiple variables imported from the ".env" file
+gh variable set -f .env
+```
+
+## Set Environment Variables With Workflow Commands
+```yaml
+steps:
+    - name: Hello
+      run echo "DYNAMIC_VAR=Hello world from action" >> $GITHUB_ENV
+
+    - name: World
+      run echo "$DYNAMIC_VAR - value is"
+```
